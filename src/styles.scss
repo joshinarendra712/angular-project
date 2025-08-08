@@ -1,1 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
+    @import 'highlight.js/styles/atom-one-dark.css';
+	    /* custom-highlight-theme.css */
+    .hljs {
+      background-color: #282c34; /* Dark background */
+      color: #abb2bf; /* Light text */
+    }
+    .hljs-comment {
+      color: #5c6370;
+      font-style: italic;
+    }
+    /* Add more rules for other highlight.js classes */

@@ -1,0 +1,82 @@
+<div class="container mt-3">
+	<div class="d-flex p-2 justify-content-between btn-success">
+	<h3 class="text-white"> Simple Reactive Form</h3>
+	<button [routerLink]="['/reactive-form']"   class="btn btn-primary" routerLinkActive="router-link-active">Back</button>
+	</div>
+	<form action="" [formGroup]="employeeForm">
+		<div class="row">
+			<div class="col-md-6">
+				<div class="card m-3">
+					<div class="card-shadow">
+						<div class="card-header text-white bg-primary">
+							<h4>Employee Details</h4>
+						</div>
+						<div class="card-body">
+							<div class="form-group">
+								<label for="name" class="py-2">Name</label>
+								<input type="text" class="form-control" id="name" formControlName="name" placeholder="Enter Employee Name">
+							</div>
+							<div class="form-group">
+								<label for="email" class="py-2">Email</label>
+								<input type="email" class="form-control" id="email" formControlName="email" placeholder="Enter Email">
+							</div>
+							<div class="form-group">
+								<label for="mobileNo" class="py-2">Mobile Number</label>
+								<input type="number" class="form-control" id="mobileNo" formControlName="mobileNo" placeholder="Enter Mobile Number">
+							</div>
+							<div class="form-group">
+								<label for="department" class="py-2">Department</label>
+								<input type="text" class="form-control" id="department" formControlName="department" placeholder=" Enter Department">
+							</div>
+						</div>
+						<div class="card footer p-2">
+							<button class="btn btn-outline-info" (click)="onSubmit()">Submit</button>
+						</div>
+					</div>
+
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="card m-3">
+					<div class="card-shadow" formArrayName="familyMembers">
+						<div
+							class="card-header d-flex justify-content-between align-items-center bg-success text-white">
+							<h4>Family Members</h4>
+							<button class="btn bg-white btn-sm ">
+								<h6 class="m-0">Add+</h6>
+							</button>
+						</div>
+						<div class="card-body">
+							@for (item of getFamilyList.controls; track $index) {
+								<div class="card">
+								<div class="card-header d-flex justify-content-between align-items-center">
+									<h6 class="m-0">Member</h6>
+									<button class="btn btn-outline-danger btn-sm">Remove</button>
+								</div>
+								<div class="card-body">
+									<div class="d-flex justify-content-between" style="gap: 16px;">
+										<div class="form-group">
+											<label for="familyName" class="py-2">Name</label>
+											<input type="text" class="form-control" id="familyName"
+												placeholder="Enter Family Men">
+										</div>
+										<div class="form-group">
+											<label for="relation" class="py-2">Relation</label>
+											<input type="text" class="form-control" id="relation"
+												placeholder="Enter Relation">
+										</div>
+										<div class="form-group">
+											<label for="age" class="py-2">Age</label>
+											<input type="number" class="form-control" id="Age" placeholder="Enter Age">
+										</div>
+									</div>
+								</div>
+							</div>
+							}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
+</div>

@@ -1,0 +1,18 @@
+<div class="mt-3">
+	<div>Select Department</div>
+	@for (item of departments; track $index) {
+	<input type="radio" name="departments" [value]="item" [checked]="selectedDepartment === item.name"
+		(change)="onDepartmentChange(item.name)">
+	<label class="m-2 my-0">{{item.name}}</label>
+	}
+
+	@if (subDepartmentArr.length) {
+	<div class="ms-4 mt-2">
+		<div>Select Sub Department</div>
+		@for (item of subDepartmentArr; track $index) {
+		<input type="checkbox" [name]="item" [(ngModel)]="selectedSubDepartmentsMap[item]" [id]="item" (change)="onSubDepartmentChange(item)">
+		{{item}}
+		}
+	</div>
+	}
+</div>

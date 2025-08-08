@@ -1,0 +1,56 @@
+<!-- <form [formGroup]="skillForm">
+	<div class="d-flex justify-content-between align-items-center mt-4" style="gap: 20px;">
+		<div class="d-flex justify-content-between ">
+			<div class="form-group">
+				<input type="text" formControlName="newSkill" class="form-control" placeholder="Type skill">
+				@if(skillForm.get('newSkill')?.hasError('required') && skillForm.get('newSkill')?.touched){
+				<div style="color:red">
+					Skill is required
+				</div>
+				}
+
+			</div>
+			<div class="mx-2">
+				<button class="btn btn-primary" (click)="onAddSkill()">Add</button>
+			</div>
+		</div>
+		<ul class="list-group mx-2">
+			<div class="row">
+				@for (item of skillsArray.controls; track $index) {
+				<li class=" col-md-6 list-group-item">{{item | json}}</li>
+				<div class="col-md-6">
+					<button class="btn btn-sm btn-info" (click)="editSkill($index)">Edit</button>
+					<button class="btn btn-sm btn-danger mx-2" (click)="removeSkill($index)">Delete</button>
+				</div>
+				}
+			</div>
+
+		</ul>
+	</div>
+</form> -->
+
+<form [formGroup]="skillForm" (ngSubmit)="saveAll()">
+	<div class="d-flex justify-content-between align-items-center mt-4" style="gap: 20px;">
+		<div class="d-flex justify-content-between">
+		<!-- Add New Skill -->
+		<input type="text" formControlName="newSkill" placeholder="Enter a skill" class="form-control">
+		<button type="button" class="btn btn-primary btn-sm" (click)="addSkill()">Add</button>
+		<div *ngIf="skillForm.get('newSkill')?.invalid && skillForm.get('newSkill')?.touched" style="color:red">
+			Skill is required
+		</div>
+
+	</div>
+	<div class="d-flex justify-content-between">
+		<!-- Skills List -->
+		<ul class="list-group">
+			<li class="list-group-item d-flex justify-content-between" *ngFor="let skillCtrl of skillsArray.controls; let i = index">
+				<div>{{ skillCtrl.value }}</div>
+				<div><button class="btn btn-primary " type="button" (click)="editSkill(i)">Edit</button>
+				<button class="btn btn-danger" type="button" (click)="removeSkill(i)">Delete</button></div>
+			</li>
+		</ul>
+	</div>
+	</div>
+
+	<!-- <button type="submit">Save All</button> -->
+</form>
